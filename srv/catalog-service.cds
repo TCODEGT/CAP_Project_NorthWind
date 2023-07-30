@@ -48,5 +48,7 @@ service CatalogService {
 	************************************/
 	function getInfo() returns String;
     function getInfo_from_library() returns String;
+    action getInfoUser_from_library() returns String;
+    function getVariableEntorno() returns String;
 
 }

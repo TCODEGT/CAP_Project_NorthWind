@@ -78,6 +78,18 @@ module.exports = cds.service.impl(async function () {
 	this.on('getInfo_from_library', async (req) => {
 		return my_libraries.getData();
     });
+
+	this.on('getInfoUser_from_library', async (req) => {
+		return "Data from Main JS";
+		//return my_libraries.getDataUser(req);
+    });
+
+	this.on('getVariableEntorno', async (req) => {
+
+		const myVaraibleEntorno = process.env.miVariableEntorno || "false"
+       	return myVaraibleEntorno;
+    });
+
 	
 
 

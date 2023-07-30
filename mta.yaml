@@ -25,7 +25,8 @@ modules:
     requires:
       - name: cap_northwind-auth
       - name: cap_northwind-dest
-
+    properties:
+      miVariableEntorno: "true"
 resources:
   - name: cap_northwind-auth
     type: org.cloudfoundry.managed-service
