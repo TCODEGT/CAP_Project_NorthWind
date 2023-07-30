@@ -2,6 +2,18 @@ const cds = require('@sap/cds');
 
 module.exports = cds.service.impl(async function () {
 
+
+	const { cust_suggested_skills } = this.entities;
+	const service3 = await cds.connect.to('SSFFDEV2CustSkills');
+	this.on('READ', cust_suggested_skills, request => {
+		const LOG2 = cds.log('sql2');
+		LOG2.info ('Cust_suggested_skills -READ request.query: '+ request.query);
+		return service3.tx(request).run(request.query);
+		
+	});
+
+
+
 	const { User } = this.entities;
 	const service2 = await cds.connect.to('SSFFDEV2User');
 	this.on('READ', User, request => {

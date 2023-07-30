@@ -47,7 +47,17 @@
         "[production]": {
           "credentials": {
             "destination": "SSFFDEV2",
-            "path":""
+            "path": ""
+          }
+        }
+      },
+      "SSFFDEV2CustSkills": {
+        "kind": "odata-v2",
+        "model": "srv/external/SSFFDEV2CustSkills",
+        "[production]": {
+          "credentials": {
+            "destination": "SSFFDEV2",
+            "path": ""
           }
         }
       }
