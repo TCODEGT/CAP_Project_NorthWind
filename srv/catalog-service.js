@@ -1,7 +1,15 @@
 const cds = require('@sap/cds');
+const my_libraries = require('./library/Functions');
 
 module.exports = cds.service.impl(async function () {
 
+
+
+
+
+    /************************
+	***GET SKILLS FROM SSFF** 
+	*************************/
 
 	const { cust_suggested_skills } = this.entities;
 	const service3 = await cds.connect.to('SSFFDEV2CustSkills');
@@ -13,6 +21,9 @@ module.exports = cds.service.impl(async function () {
 	});
 
 
+    /************************
+	***GET USERS FROM SSFF** 
+	*************************/
 
 	const { User } = this.entities;
 	const service2 = await cds.connect.to('SSFFDEV2User');
@@ -24,6 +35,9 @@ module.exports = cds.service.impl(async function () {
 	});
 
 	
+    /******************************
+	***GET PRODUCTS FROM NORTHWIND** 
+	********************************/
 
 	const { Products } = this.entities;
 	const service = await cds.connect.to('NorthWind');
@@ -39,6 +53,10 @@ module.exports = cds.service.impl(async function () {
 		
 	});
 
+    /******************************
+	***GET SUPPLIERS FROM NORTHWIND** 
+	********************************/
+
 	const { Suppliers } = this.entities;
 	this.on('READ', Suppliers, request => {
         //const LOG = cds.log('sql');
@@ -47,8 +65,19 @@ module.exports = cds.service.impl(async function () {
 		
 	});
 
+	/***********************************
+	*******FUNCTION AND ACTIONS********** 
+	************************************/
 
+	this.on('getInfo', async (req) => {
+        //return JSON.stringify("hola");
+		console.log("Log: getInfo");
+		return "Data from Main JS";
+    });
 
+	this.on('getInfo_from_library', async (req) => {
+		return my_libraries.getData();
+    });
 	
 
 

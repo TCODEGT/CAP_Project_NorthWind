@@ -4,6 +4,10 @@ using {SSFFDEV2CustSkills as externalSSFFDEV2CustSkills} from './external/SSFFDE
 
 service CatalogService {
 
+
+    /****************************
+	***GET FROM NORTHWIND ********
+	******************************/
     @readonly
     entity Products     as projection on external.Products {
         key ID,
@@ -21,6 +25,10 @@ service CatalogService {
             Name
     };
 
+    /************************
+	***GET FROM SSFF ********
+	*************************/
+
     @readonly
     entity User as projection on externalssffuser.User {
         key userId,
@@ -34,5 +42,11 @@ service CatalogService {
         @readonly
     entity cust_suggested_skills as projection on externalSSFFDEV2CustSkills.cust_suggested_skills;
 
+
+	/***********************************
+	*******FUNCTION AND ACTIONS********** 
+	************************************/
+	function getInfo() returns String;
+    function getInfo_from_library() returns String;
 
 }
