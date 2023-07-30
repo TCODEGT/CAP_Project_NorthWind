@@ -40,6 +40,16 @@
           "kind": "xsuaa",
           "restrict_all_services": false
         }
+      },
+      "SSFFDEV2User": {
+        "kind": "odata-v2",
+        "model": "srv/external/SSFFDEV2User",
+        "[production]": {
+          "credentials": {
+            "destination": "SSFFDEV2",
+            "path":""
+          }
+        }
       }
     }
   }

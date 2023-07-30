@@ -1,4 +1,5 @@
 using {NorthWind as external} from './external/NorthWind.csn';
+using {SSFFDEV2User as externalssffuser} from './external/SSFFDEV2User.csn';
 
 service CatalogService {
 
@@ -18,5 +19,16 @@ service CatalogService {
         key ID,
             Name
     };
+
+    @readonly
+    entity User as projection on externalssffuser.User {
+        key userId,
+            email,
+            assignmentUUID,
+            gender,
+            isPrimaryAssignment,
+            status
+    };
+
 
 }
