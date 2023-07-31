@@ -90,6 +90,18 @@ module.exports = cds.service.impl(async function () {
        	return myVaraibleEntorno;
     });
 
+	this.on('getLabelFromi18n', async (req) => {
+
+	//	const locale = req.user.sap-locale;
+	//	req.user.sap-locale;
+	//	const bundle = new TextBundle('../i18n/i18n', 'en_GB');
+	//	let texto= bundle.getText('milabeli18n');
+
+       	return "MILABEL";  
+    });
+
+
+	
 	
 
 

@@ -2,6 +2,7 @@ using {NorthWind as external} from './external/NorthWind.csn';
 using {SSFFDEV2User as externalssffuser} from './external/SSFFDEV2User.csn';
 using {SSFFDEV2CustSkills as externalSSFFDEV2CustSkills} from './external/SSFFDEV2CustSkills.csn';
 
+//service CatalogService @(requires: 'authenticated-user') { -> Con autenticacion
 service CatalogService {
 
 
@@ -50,5 +51,6 @@ service CatalogService {
     function getInfo_from_library() returns String;
     action getInfoUser_from_library() returns String;
     function getVariableEntorno() returns String;
+    function getLabelFromi18n() returns String;
 
 }

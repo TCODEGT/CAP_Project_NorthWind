@@ -32,6 +32,7 @@ resources:
     type: org.cloudfoundry.managed-service
     parameters:
       service: xsuaa
+      service-name: cap_northwind-auth
       service-plan: application
       path: ./xs-security.json
       config:
