@@ -2,8 +2,8 @@ using {NorthWind as external} from './external/NorthWind.csn';
 using {SSFFDEV2User as externalssffuser} from './external/SSFFDEV2User.csn';
 using {SSFFDEV2CustSkills as externalSSFFDEV2CustSkills} from './external/SSFFDEV2CustSkills.csn';
 
-//service CatalogService @(requires: 'authenticated-user') { -> Con autenticacion
-service CatalogService {
+@(requires: 'authenticated-user')
+service CatalogService  { 
 
 
     /****************************

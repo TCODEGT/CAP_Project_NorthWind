@@ -36,6 +36,9 @@
           }
         }
       },
+      "uaa": {
+        "kind": "xsuaa"
+      },
       "[production]": {
         "auth": {
           "kind": "xsuaa",
