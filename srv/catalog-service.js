@@ -1,10 +1,9 @@
 const cds = require('@sap/cds');
 const my_libraries = require('./library/Functions');
+const log = require('cf-nodejs-logging-support');
+log.setLoggingLevel("info");
 
 module.exports = cds.service.impl(async function () {
-
-
-
 
 
     /************************
@@ -16,6 +15,10 @@ module.exports = cds.service.impl(async function () {
 	this.on('READ', cust_suggested_skills, request => {
 		const LOG2 = cds.log('sql2');
 		LOG2.info ('Cust_suggested_skills -READ request.query: '+ request.query);
+
+		log.info("Hello World");
+
+		
 		return service3.tx(request).run(request.query);
 		
 	});
@@ -64,6 +67,12 @@ module.exports = cds.service.impl(async function () {
 		return service.tx(request).run(request.query);
 		
 	});
+
+
+
+
+
+
 
 	/***********************************
 	*******FUNCTION AND ACTIONS********** 

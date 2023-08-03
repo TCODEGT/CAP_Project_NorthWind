@@ -25,6 +25,7 @@ modules:
     requires:
       - name: cap_northwind-auth
       - name: cap_northwind-dest
+      - name: cap_northwind-applogging
     properties:
       miVariableEntorno: "true"
 resources:
@@ -43,4 +44,11 @@ resources:
     type: org.cloudfoundry.managed-service
     parameters:
       service: destination
+      service-plan: lite
+
+    # ---------------- APPLICATION LOGGING SERVICE ---------------
+  - name: cap_northwind-applogging
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: application-logs
       service-plan: lite
