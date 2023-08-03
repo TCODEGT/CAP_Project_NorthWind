@@ -6,7 +6,7 @@ log.setLoggingLevel("info");
 module.exports = cds.service.impl(async function () {
 
 
-    /************************
+	/************************
 	***GET SKILLS FROM SSFF** 
 	*************************/
 
@@ -14,17 +14,17 @@ module.exports = cds.service.impl(async function () {
 	const service3 = await cds.connect.to('SSFFDEV2CustSkills');
 	this.on('READ', cust_suggested_skills, request => {
 		const LOG2 = cds.log('sql2');
-		LOG2.info ('Cust_suggested_skills -READ request.query: '+ request.query);
+		LOG2.info('Cust_suggested_skills -READ request.query: ' + request.query);
 
 		log.info("Hello World");
 
-		
+
 		return service3.tx(request).run(request.query);
-		
+
 	});
 
 
-    /************************
+	/************************
 	***GET USERS FROM SSFF** 
 	*************************/
 
@@ -32,13 +32,13 @@ module.exports = cds.service.impl(async function () {
 	const service2 = await cds.connect.to('SSFFDEV2User');
 	this.on('READ', User, request => {
 		const LOG2 = cds.log('sql2');
-		LOG2.info ('SSFFDEV2User -READ request.query: '+ request.query);
+		LOG2.info('SSFFDEV2User -READ request.query: ' + request.query);
 		return service2.tx(request).run(request.query);
-		
+
 	});
 
-	
-    /******************************
+
+	/******************************
 	***GET PRODUCTS FROM NORTHWIND** 
 	********************************/
 
@@ -46,27 +46,49 @@ module.exports = cds.service.impl(async function () {
 	const service = await cds.connect.to('NorthWind');
 
 	this.on('READ', Products, request => {
-		
+
 		const LOG = cds.log('sql');
-		LOG.info ('LOG.info: : Products - Read');
+		LOG.info('LOG.info: : Products - Read');
 		//LOG.error ('LOG.error: : Products - Read');
 
 		//console.log('CONSOLE.log : Products - Read');
 		return service.tx(request).run(request.query);
-		
+
 	});
 
-    /******************************
+	/******************************
 	***GET SUPPLIERS FROM NORTHWIND** 
 	********************************/
 
 	const { Suppliers } = this.entities;
 	this.on('READ', Suppliers, request => {
-        //const LOG = cds.log('sql');
+		//const LOG = cds.log('sql');
 		//LOG.info ('LOG.info: : Suppliers XXX- Read');
 		return service.tx(request).run(request.query);
-		
+
 	});
+
+	/*this.after('READ', Suppliers, request => {
+		console.log("Suppliers AFTER READ ALLS event");
+	});
+
+
+	this.after('READ',Suppliers, (each)=>{
+		console.log("Suppliers AFTER READ ONE BY ONE event:" + each.ID);
+		//modificamos el valor de lo que obtenemos
+		each.Name = each.ID + ":field from logic custom";
+	  })*/
+
+
+	this.after('READ', Suppliers, (Suppliers) => {
+		console.log("Suppliers ONLY ONCE"); //log onlye once for all entries
+		for (let each of Suppliers) {
+			console.log("Suppliers ONLY BY ONE");  //logic per row
+			each.Location = each.ID + ":field from logic custom";
+		}
+		Suppliers.push({ID:"ID3",Name:"Name3"}); //add row
+	})
+
 
 
 
@@ -79,39 +101,39 @@ module.exports = cds.service.impl(async function () {
 	************************************/
 
 	this.on('getInfo', async (req) => {
-        //return JSON.stringify("hola");
+		//return JSON.stringify("hola");
 		console.log("Log: getInfo");
 		return "Data from Main JS";
-    });
+	});
 
 	this.on('getInfo_from_library', async (req) => {
 		return my_libraries.getData();
-    });
+	});
 
 	this.on('getInfoUser_from_library', async (req) => {
 		return "Data from Main JS";
 		//return my_libraries.getDataUser(req);
-    });
+	});
 
 	this.on('getVariableEntorno', async (req) => {
 
 		const myVaraibleEntorno = process.env.miVariableEntorno || "false"
-       	return myVaraibleEntorno;
-    });
+		return myVaraibleEntorno;
+	});
 
 	this.on('getLabelFromi18n', async (req) => {
 
-	//	const locale = req.user.sap-locale;
-	//	req.user.sap-locale;
-	//	const bundle = new TextBundle('../i18n/i18n', 'en_GB');
-	//	let texto= bundle.getText('milabeli18n');
+		//	const locale = req.user.sap-locale;
+		//	req.user.sap-locale;
+		//	const bundle = new TextBundle('../i18n/i18n', 'en_GB');
+		//	let texto= bundle.getText('milabeli18n');
 
-       	return "MILABEL";  
-    });
+		return "MILABEL";
+	});
 
 
-	
-	
+
+
 
 
 

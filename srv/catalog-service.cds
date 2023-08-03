@@ -23,7 +23,8 @@ service CatalogService  {
     @readonly
     entity My_Suppliers as projection on external.Suppliers {
         key ID,
-            Name
+            Name,
+            Location
     };
 
     /************************
