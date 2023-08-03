@@ -3,6 +3,9 @@ const my_libraries = require('./library/Functions');
 const log = require('cf-nodejs-logging-support');
 log.setLoggingLevel("info");
 
+
+
+
 module.exports = cds.service.impl(async function () {
 
 
@@ -129,6 +132,13 @@ module.exports = cds.service.impl(async function () {
 		//	let texto= bundle.getText('milabeli18n');
 
 		return "MILABEL";
+	});
+
+	this.on('getJWT', async (req) => {
+
+		return my_libraries.getJWT(req);
+
+
 	});
 
 

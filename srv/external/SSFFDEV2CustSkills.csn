@@ -1,158 +1,158 @@
 {
-  "meta": {
-    "creator": "cds-dk 6.8.2"
+ "meta": {
+  "creator": "cds-dk 7.0.2"
+ },
+ "$version": "2.0",
+ "definitions": {
+  "SSFFDEV2CustSkills": {
+   "kind": "service",
+   "@cds.external": true,
+   "@m.IsDefaultEntityContainer": "true"
   },
-  "$version": "2.0",
-  "definitions": {
-    "SSFFDEV2CustSkills": {
-      "kind": "service",
-      "@cds.external": true,
-      "@m.IsDefaultEntityContainer": "true"
+  "SSFFDEV2CustSkills.cust_suggested_skills": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "@sap.label": "Reskilling - Suggested Skills",
+   "@sap.creatable": "true",
+   "@sap.updatable": "true",
+   "@sap.upsertable": "true",
+   "@sap.deletable": "true",
+   "elements": {
+    "externalCode": {
+     "key": true,
+     "type": "cds.Integer64",
+     "@sap.required": "false",
+     "@sap.creatable": "true",
+     "@sap.updatable": "true",
+     "@sap.upsertable": "true",
+     "@sap.visible": "true",
+     "@sap.sortable": "true",
+     "@sap.filterable": "true",
+     "@sap.label": "externalCode",
+     "notNull": true
     },
-    "SSFFDEV2CustSkills.cust_suggested_skills": {
-      "kind": "entity",
-      "@cds.external": true,
-      "@cds.persistence.skip": true,
-      "@sap.label": "Reskilling - Suggested Skills",
-      "@sap.creatable": "true",
-      "@sap.updatable": "true",
-      "@sap.upsertable": "true",
-      "@sap.deletable": "true",
-      "elements": {
-        "externalCode": {
-          "key": true,
-          "type": "cds.Integer64",
-          "@sap.required": "false",
-          "@sap.creatable": "true",
-          "@sap.updatable": "true",
-          "@sap.upsertable": "true",
-          "@sap.visible": "true",
-          "@sap.sortable": "true",
-          "@sap.filterable": "true",
-          "@sap.label": "externalCode",
-          "notNull": true
-        },
-        "createdBy": {
-          "type": "cds.String",
-          "length": 100,
-          "@sap.required": "false",
-          "@sap.creatable": "false",
-          "@sap.updatable": "false",
-          "@sap.upsertable": "false",
-          "@sap.visible": "true",
-          "@sap.sortable": "true",
-          "@sap.filterable": "true",
-          "@sap.label": "Created By"
-        },
-        "createdDateTime": {
-          "type": "cds.DateTime",
-          "@odata.Type": "Edm.DateTimeOffset",
-          "@sap.required": "false",
-          "@sap.creatable": "false",
-          "@sap.updatable": "false",
-          "@sap.upsertable": "false",
-          "@sap.visible": "true",
-          "@sap.sortable": "true",
-          "@sap.filterable": "true",
-          "@sap.label": "Created On"
-        },
-        "cust_area": {
-          "type": "cds.String",
-          "length": 128,
-          "@sap.required": "false",
-          "@sap.creatable": "true",
-          "@sap.updatable": "true",
-          "@sap.upsertable": "true",
-          "@sap.visible": "true",
-          "@sap.sortable": "true",
-          "@sap.filterable": "true",
-          "@sap.label": "area"
-        },
-        "cust_date": {
-          "type": "cds.Date",
-          "@sap.required": "false",
-          "@sap.creatable": "true",
-          "@sap.updatable": "true",
-          "@sap.upsertable": "true",
-          "@sap.visible": "true",
-          "@sap.sortable": "true",
-          "@sap.filterable": "true",
-          "@sap.display.format": "Date",
-          "@sap.label": "date"
-        },
-        "cust_description": {
-          "type": "cds.String",
-          "length": 510,
-          "@sap.required": "false",
-          "@sap.creatable": "true",
-          "@sap.updatable": "true",
-          "@sap.upsertable": "true",
-          "@sap.visible": "true",
-          "@sap.sortable": "true",
-          "@sap.filterable": "true",
-          "@sap.label": "description"
-        },
-        "cust_user": {
-          "type": "cds.String",
-          "length": 100,
-          "@sap.required": "false",
-          "@sap.creatable": "true",
-          "@sap.updatable": "true",
-          "@sap.upsertable": "true",
-          "@sap.visible": "true",
-          "@sap.sortable": "true",
-          "@sap.filterable": "true",
-          "@sap.label": "user"
-        },
-        "externalName": {
-          "type": "cds.String",
-          "length": 128,
-          "@sap.required": "false",
-          "@sap.creatable": "true",
-          "@sap.updatable": "true",
-          "@sap.upsertable": "true",
-          "@sap.visible": "true",
-          "@sap.sortable": "true",
-          "@sap.filterable": "true",
-          "@sap.label": "Nombre de skill"
-        },
-        "lastModifiedBy": {
-          "type": "cds.String",
-          "length": 100,
-          "@sap.required": "false",
-          "@sap.creatable": "false",
-          "@sap.updatable": "false",
-          "@sap.upsertable": "false",
-          "@sap.visible": "true",
-          "@sap.sortable": "true",
-          "@sap.filterable": "true",
-          "@sap.label": "Last Modified By"
-        },
-        "lastModifiedDateTime": {
-          "type": "cds.DateTime",
-          "@odata.Type": "Edm.DateTimeOffset",
-          "@sap.required": "false",
-          "@sap.creatable": "false",
-          "@sap.updatable": "false",
-          "@sap.upsertable": "false",
-          "@sap.visible": "true",
-          "@sap.sortable": "true",
-          "@sap.filterable": "true",
-          "@sap.label": "Last Modified Date"
-        },
-        "mdfSystemRecordStatus": {
-          "type": "cds.String",
-          "length": 255,
-          "@sap.required": "false",
-          "@sap.creatable": "false",
-          "@sap.updatable": "false",
-          "@sap.upsertable": "false",
-          "@sap.visible": "true",
-          "@sap.sortable": "true",
-          "@sap.filterable": "true",
-          "@sap.label": "Record Status"
-        }
-      }
+    "createdBy": {
+     "type": "cds.String",
+     "length": 100,
+     "@sap.required": "false",
+     "@sap.creatable": "false",
+     "@sap.updatable": "false",
+     "@sap.upsertable": "false",
+     "@sap.visible": "true",
+     "@sap.sortable": "true",
+     "@sap.filterable": "true",
+     "@sap.label": "Created By"
+    },
+    "createdDateTime": {
+     "type": "cds.DateTime",
+     "@odata.Type": "Edm.DateTimeOffset",
+     "@sap.required": "false",
+     "@sap.creatable": "false",
+     "@sap.updatable": "false",
+     "@sap.upsertable": "false",
+     "@sap.visible": "true",
+     "@sap.sortable": "true",
+     "@sap.filterable": "true",
+     "@sap.label": "Created On"
+    },
+    "cust_area": {
+     "type": "cds.String",
+     "length": 128,
+     "@sap.required": "false",
+     "@sap.creatable": "true",
+     "@sap.updatable": "true",
+     "@sap.upsertable": "true",
+     "@sap.visible": "true",
+     "@sap.sortable": "true",
+     "@sap.filterable": "true",
+     "@sap.label": "area"
+    },
+    "cust_date": {
+     "type": "cds.Date",
+     "@sap.required": "false",
+     "@sap.creatable": "true",
+     "@sap.updatable": "true",
+     "@sap.upsertable": "true",
+     "@sap.visible": "true",
+     "@sap.sortable": "true",
+     "@sap.filterable": "true",
+     "@sap.display.format": "Date",
+     "@sap.label": "date"
+    },
+    "cust_description": {
+     "type": "cds.String",
+     "length": 510,
+     "@sap.required": "false",
+     "@sap.creatable": "true",
+     "@sap.updatable": "true",
+     "@sap.upsertable": "true",
+     "@sap.visible": "true",
+     "@sap.sortable": "true",
+     "@sap.filterable": "true",
+     "@sap.label": "description"
+    },
+    "cust_user": {
+     "type": "cds.String",
+     "length": 100,
+     "@sap.required": "false",
+     "@sap.creatable": "true",
+     "@sap.updatable": "true",
+     "@sap.upsertable": "true",
+     "@sap.visible": "true",
+     "@sap.sortable": "true",
+     "@sap.filterable": "true",
+     "@sap.label": "user"
+    },
+    "externalName": {
+     "type": "cds.String",
+     "length": 128,
+     "@sap.required": "false",
+     "@sap.creatable": "true",
+     "@sap.updatable": "true",
+     "@sap.upsertable": "true",
+     "@sap.visible": "true",
+     "@sap.sortable": "true",
+     "@sap.filterable": "true",
+     "@sap.label": "Nombre de skill"
+    },
+    "lastModifiedBy": {
+     "type": "cds.String",
+     "length": 100,
+     "@sap.required": "false",
+     "@sap.creatable": "false",
+     "@sap.updatable": "false",
+     "@sap.upsertable": "false",
+     "@sap.visible": "true",
+     "@sap.sortable": "true",
+     "@sap.filterable": "true",
+     "@sap.label": "Last Modified By"
+    },
+    "lastModifiedDateTime": {
+     "type": "cds.DateTime",
+     "@odata.Type": "Edm.DateTimeOffset",
+     "@sap.required": "false",
+     "@sap.creatable": "false",
+     "@sap.updatable": "false",
+     "@sap.upsertable": "false",
+     "@sap.visible": "true",
+     "@sap.sortable": "true",
+     "@sap.filterable": "true",
+     "@sap.label": "Last Modified Date"
+    },
+    "mdfSystemRecordStatus": {
+     "type": "cds.String",
+     "length": 255,
+     "@sap.required": "false",
+     "@sap.creatable": "false",
+     "@sap.updatable": "false",
+     "@sap.upsertable": "false",
+     "@sap.visible": "true",
+     "@sap.sortable": "true",
+     "@sap.filterable": "true",
+     "@sap.label": "Record Status"
     }
+   }
   }
+ }
 }

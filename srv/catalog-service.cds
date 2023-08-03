@@ -53,5 +53,6 @@ service CatalogService  {
     action getInfoUser_from_library() returns String;
     function getVariableEntorno() returns String;
     function getLabelFromi18n() returns String;
+    function getJWT() returns String;
 
 }
