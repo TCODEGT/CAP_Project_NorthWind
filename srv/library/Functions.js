@@ -36,9 +36,12 @@ function getJWT(req) {
             console.log("JWT No Authoriztion");
         }
         return "JWT Token:" + mi_autho;
-    } 
+    }   
+}
 
-    
+function getDatafromUser(req) {
+   // console.log("Log: getDatafromUse from library:" + req.data.variable);
+    return "getDatafromUse from library";// + req.data.variable;
 }
 
 module.exports = {
