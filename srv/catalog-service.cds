@@ -69,12 +69,12 @@ service CatalogService {
     function getVariableEntorno()                  returns String;
     function getLabelFromi18n()                    returns String;
     function getJWT()                              returns String;
-    /*action   getDatafromUser(req : mytype)         returns String;
+    action   getDatafromUser(req : mytype) returns String;
 
     type mytype {
         id   : String;
         name : String
-    }*/
+    }
 
     action   layoutValidation(batch : batchHeader) returns String;
     type batchHeader {

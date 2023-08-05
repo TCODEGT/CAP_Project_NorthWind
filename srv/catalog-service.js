@@ -138,9 +138,9 @@ module.exports = cds.service.impl(async function () {
 		return my_libraries.getJWT(req);
 	});
 
-	/*this.on('getDatafromUser', async (req) => {
+	this.on('getDatafromUser', async (req) => {
 		return my_libraries.getDatafromUser(req);
-	});*/
+	});
 
 	this.on('layoutValidation', (req) => {
 		const { batch } = req.data;

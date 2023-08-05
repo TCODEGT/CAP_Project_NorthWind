@@ -47,6 +47,7 @@ function getDatafromUser(req) {
 module.exports = {
     getData,
     getDataUser,
-    getJWT
+    getJWT,
+    getDatafromUser
 }
 
