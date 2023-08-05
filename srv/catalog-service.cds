@@ -14,9 +14,12 @@ service CatalogService {
      * *****************************
      * ```
      */
+
+    /** Description Entidad Product , VCR Documentation*/
     @readonly
     entity Products              as projection on external.Products {
         key ID,
+          /** Description Field Name , VCR Documentation */
             Name,
             Description,
             ReleaseDate,
@@ -63,6 +66,8 @@ service CatalogService {
   * ***********************************
   * ```
   */
+    
+    /** Description function getInfo() , VCR Documentation */
     function getInfo()                             returns String;
     function getInfo_from_library()                returns String;
     action   getInfoUser_from_library()            returns String;
@@ -71,6 +76,7 @@ service CatalogService {
     function getJWT()                              returns String;
     action   getDatafromUser(req : mytype) returns String;
 
+    /** Description Type mytype , VCR Documentation */
     type mytype {
         id   : String;
         name : String

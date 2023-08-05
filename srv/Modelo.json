@@ -1,0 +1,3241 @@
+{
+  "definitions": {
+    "CatalogService": {
+      "kind": "service"
+    },
+    "CatalogService.Products": {
+      "kind": "entity",
+      "doc": "Description Entidad Product , VCR Documentation",
+      "@readonly": true,
+      "@cds.persistence.skip": true,
+      "@open": true,
+      "@Org.OData.Display.V1.Description": "All Products available in the online store",
+      "projection": {
+        "from": {
+          "ref": [
+            "NorthWind.Products"
+          ]
+        },
+        "columns": [
+          {
+            "key": true,
+            "ref": [
+              "ID"
+            ]
+          },
+          {
+            "ref": [
+              "Name"
+            ]
+          },
+          {
+            "ref": [
+              "Description"
+            ]
+          },
+          {
+            "ref": [
+              "ReleaseDate"
+            ]
+          },
+          {
+            "ref": [
+              "DiscontinuedDate"
+            ]
+          },
+          {
+            "ref": [
+              "Rating"
+            ]
+          },
+          {
+            "ref": [
+              "Price"
+            ]
+          }
+        ]
+      },
+      "elements": {
+        "ID": {
+          "key": true,
+          "type": "cds.Integer",
+          "notNull": true
+        },
+        "Name": {
+          "doc": "Description Field Name , VCR Documentation",
+          "@Org.OData.Display.V1.DisplayName": "Product Name",
+          "type": "cds.LargeString"
+        },
+        "Description": {
+          "type": "cds.LargeString"
+        },
+        "ReleaseDate": {
+          "@odata.Precision": 0,
+          "@odata.Type": "Edm.DateTimeOffset",
+          "type": "cds.DateTime",
+          "notNull": true
+        },
+        "DiscontinuedDate": {
+          "@odata.Precision": 0,
+          "@odata.Type": "Edm.DateTimeOffset",
+          "type": "cds.DateTime"
+        },
+        "Rating": {
+          "type": "cds.Integer",
+          "notNull": true
+        },
+        "Price": {
+          "type": "cds.Double",
+          "notNull": true
+        }
+      }
+    },
+    "CatalogService.My_Suppliers": {
+      "kind": "entity",
+      "@readonly": true,
+      "@cds.persistence.skip": true,
+      "@Org.OData.Publication.V1.PublisherName": "Microsoft Corp.",
+      "@Org.OData.Publication.V1.PublisherId": "MSFT",
+      "@Org.OData.Publication.V1.Keywords": "Inventory, Supplier, Advertisers, Sales, Finance",
+      "@Org.OData.Publication.V1.AttributionUrl": "http://www.odata.org/",
+      "@Org.OData.Publication.V1.AttributionDescription": "All rights reserved",
+      "@Org.OData.Publication.V1.DocumentationUrl ": "http://www.odata.org/",
+      "@Org.OData.Publication.V1.TermsOfUseUrl": "All rights reserved",
+      "@Org.OData.Publication.V1.PrivacyPolicyUrl": "http://www.odata.org/",
+      "@Org.OData.Publication.V1.LastModified": "4/2/2013",
+      "@Org.OData.Publication.V1.ImageUrl ": "http://www.odata.org/",
+      "projection": {
+        "from": {
+          "ref": [
+            "NorthWind.Suppliers"
+          ]
+        },
+        "columns": [
+          {
+            "key": true,
+            "ref": [
+              "ID"
+            ]
+          },
+          {
+            "ref": [
+              "Name"
+            ]
+          },
+          {
+            "ref": [
+              "Location"
+            ]
+          }
+        ]
+      },
+      "elements": {
+        "ID": {
+          "key": true,
+          "type": "cds.Integer",
+          "notNull": true
+        },
+        "Name": {
+          "type": "cds.LargeString"
+        },
+        "Location": {
+          "@odata.Type": "Edm.GeographyPoint",
+          "type": "cds.String"
+        }
+      }
+    },
+    "CatalogService.User": {
+      "kind": "entity",
+      "doc": "***\n\n```\n***GET FROM SSFF ********\n************************\n```",
+      "@readonly": true,
+      "@cds.persistence.skip": true,
+      "@sap.label": "User",
+      "@sap.creatable": "true",
+      "@sap.updatable": "true",
+      "@sap.upsertable": "true",
+      "@sap.deletable": "false",
+      "projection": {
+        "from": {
+          "ref": [
+            "SSFFDEV2User.User"
+          ]
+        },
+        "columns": [
+          {
+            "key": true,
+            "ref": [
+              "userId"
+            ]
+          },
+          {
+            "ref": [
+              "email"
+            ]
+          },
+          {
+            "ref": [
+              "assignmentUUID"
+            ]
+          },
+          {
+            "ref": [
+              "gender"
+            ]
+          },
+          {
+            "ref": [
+              "isPrimaryAssignment"
+            ]
+          },
+          {
+            "ref": [
+              "status"
+            ]
+          }
+        ]
+      },
+      "elements": {
+        "userId": {
+          "@sap.required": "true",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.field.control": "userPermissionsNav/userId",
+          "@sap.label": "User ID",
+          "key": true,
+          "type": "cds.String",
+          "length": 100,
+          "notNull": true
+        },
+        "email": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/email",
+          "@sap.label": "Email",
+          "type": "cds.String",
+          "length": 100
+        },
+        "assignmentUUID": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "assignmentUUID",
+          "type": "cds.String",
+          "length": 32,
+          "notNull": true
+        },
+        "gender": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/gender",
+          "@sap.label": "Gender",
+          "type": "cds.LargeString",
+          "notNull": true
+        },
+        "isPrimaryAssignment": {
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "true",
+          "@sap.label": "isPrimaryAssignment",
+          "type": "cds.Boolean",
+          "notNull": true
+        },
+        "status": {
+          "@sap.required": "true",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.field.control": "userPermissionsNav/status",
+          "@sap.label": "Status",
+          "type": "cds.String",
+          "length": 17,
+          "notNull": true
+        }
+      }
+    },
+    "CatalogService.cust_suggested_skills": {
+      "kind": "entity",
+      "@readonly": true,
+      "@cds.persistence.skip": true,
+      "@sap.label": "Reskilling - Suggested Skills",
+      "@sap.creatable": "true",
+      "@sap.updatable": "true",
+      "@sap.upsertable": "true",
+      "@sap.deletable": "true",
+      "projection": {
+        "from": {
+          "ref": [
+            "SSFFDEV2CustSkills.cust_suggested_skills"
+          ]
+        }
+      },
+      "elements": {
+        "externalCode": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "externalCode",
+          "key": true,
+          "type": "cds.Integer64",
+          "notNull": true
+        },
+        "createdBy": {
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "Created By",
+          "type": "cds.String",
+          "length": 100
+        },
+        "createdDateTime": {
+          "@odata.Type": "Edm.DateTimeOffset",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "Created On",
+          "type": "cds.DateTime"
+        },
+        "cust_area": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "area",
+          "type": "cds.String",
+          "length": 128
+        },
+        "cust_date": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.display.format": "Date",
+          "@sap.label": "date",
+          "type": "cds.Date"
+        },
+        "cust_description": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "description",
+          "type": "cds.String",
+          "length": 510
+        },
+        "cust_user": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "user",
+          "type": "cds.String",
+          "length": 100
+        },
+        "externalName": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "Nombre de skill",
+          "type": "cds.String",
+          "length": 128
+        },
+        "lastModifiedBy": {
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "Last Modified By",
+          "type": "cds.String",
+          "length": 100
+        },
+        "lastModifiedDateTime": {
+          "@odata.Type": "Edm.DateTimeOffset",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "Last Modified Date",
+          "type": "cds.DateTime"
+        },
+        "mdfSystemRecordStatus": {
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "Record Status",
+          "type": "cds.String",
+          "length": 255
+        }
+      }
+    },
+    "CatalogService.getInfo": {
+      "kind": "function",
+      "doc": "Description function getInfo() , VCR Documentation",
+      "returns": {
+        "type": "cds.String"
+      }
+    },
+    "CatalogService.getInfo_from_library": {
+      "kind": "function",
+      "returns": {
+        "type": "cds.String"
+      }
+    },
+    "CatalogService.getInfoUser_from_library": {
+      "kind": "action",
+      "returns": {
+        "type": "cds.String"
+      }
+    },
+    "CatalogService.getVariableEntorno": {
+      "kind": "function",
+      "returns": {
+        "type": "cds.String"
+      }
+    },
+    "CatalogService.getLabelFromi18n": {
+      "kind": "function",
+      "returns": {
+        "type": "cds.String"
+      }
+    },
+    "CatalogService.getJWT": {
+      "kind": "function",
+      "returns": {
+        "type": "cds.String"
+      }
+    },
+    "CatalogService.getDatafromUser": {
+      "kind": "action",
+      "params": {
+        "req": {
+          "doc": "Description Type mytype , VCR Documentation",
+          "type": "CatalogService.mytype"
+        }
+      },
+      "returns": {
+        "type": "cds.String"
+      }
+    },
+    "CatalogService.mytype": {
+      "kind": "type",
+      "doc": "Description Type mytype , VCR Documentation",
+      "elements": {
+        "id": {
+          "type": "cds.String"
+        },
+        "name": {
+          "type": "cds.String"
+        }
+      }
+    },
+    "CatalogService.layoutValidation": {
+      "kind": "action",
+      "params": {
+        "batch": {
+          "type": "CatalogService.batchHeader"
+        }
+      },
+      "returns": {
+        "type": "cds.String"
+      }
+    },
+    "CatalogService.batchHeader": {
+      "kind": "type",
+      "elements": {
+        "hdId": {
+          "type": "cds.String"
+        },
+        "scpapp": {
+          "type": "cds.String"
+        },
+        "scpuser": {
+          "type": "cds.String"
+        },
+        "company": {
+          "type": "cds.String"
+        },
+        "division": {
+          "type": "cds.String"
+        },
+        "plant": {
+          "type": "cds.String"
+        },
+        "items": {
+          "items": {
+            "type": "CatalogService.batchItem"
+          }
+        }
+      }
+    },
+    "CatalogService.batchItem": {
+      "kind": "type",
+      "elements": {
+        "plant": {
+          "type": "cds.String"
+        },
+        "whouse": {
+          "type": "cds.String"
+        },
+        "idvehi": {
+          "type": "cds.String"
+        },
+        "equnr": {
+          "type": "cds.String"
+        },
+        "material": {
+          "type": "cds.String"
+        }
+      }
+    },
+    "NorthWind.FeaturedProduct": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@open": true,
+      "@Org.OData.Display.V1.Description": "All Products available in the online store",
+      "includes": [
+        "NorthWind.Products"
+      ],
+      "elements": {
+        "ID": {
+          "key": true,
+          "type": "cds.Integer",
+          "notNull": true
+        },
+        "Name": {
+          "@Org.OData.Display.V1.DisplayName": "Product Name",
+          "type": "cds.LargeString"
+        },
+        "Description": {
+          "type": "cds.LargeString"
+        },
+        "ReleaseDate": {
+          "@odata.Precision": 0,
+          "@odata.Type": "Edm.DateTimeOffset",
+          "type": "cds.DateTime",
+          "notNull": true
+        },
+        "DiscontinuedDate": {
+          "@odata.Precision": 0,
+          "@odata.Type": "Edm.DateTimeOffset",
+          "type": "cds.DateTime"
+        },
+        "Rating": {
+          "type": "cds.Integer",
+          "notNull": true
+        },
+        "Price": {
+          "type": "cds.Double",
+          "notNull": true
+        },
+        "Categories": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "NorthWind.Categories",
+          "keys": []
+        },
+        "Supplier": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "cardinality": {
+            "max": 1
+          },
+          "target": "NorthWind.Suppliers",
+          "keys": []
+        },
+        "ProductDetail": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "cardinality": {
+            "max": 1
+          },
+          "target": "NorthWind.ProductDetails",
+          "keys": []
+        },
+        "Advertisement": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "cardinality": {
+            "max": 1
+          },
+          "target": "NorthWind.Advertisements",
+          "keys": []
+        }
+      }
+    },
+    "NorthWind.Customer": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@open": true,
+      "includes": [
+        "NorthWind.Persons"
+      ],
+      "elements": {
+        "ID": {
+          "key": true,
+          "type": "cds.Integer",
+          "notNull": true
+        },
+        "Name": {
+          "type": "cds.LargeString"
+        },
+        "PersonDetail": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "cardinality": {
+            "max": 1
+          },
+          "target": "NorthWind.PersonDetails",
+          "keys": []
+        },
+        "TotalExpense": {
+          "type": "cds.Decimal",
+          "notNull": true
+        }
+      }
+    },
+    "NorthWind.Employee": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@open": true,
+      "includes": [
+        "NorthWind.Persons"
+      ],
+      "elements": {
+        "ID": {
+          "key": true,
+          "type": "cds.Integer",
+          "notNull": true
+        },
+        "Name": {
+          "type": "cds.LargeString"
+        },
+        "PersonDetail": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "cardinality": {
+            "max": 1
+          },
+          "target": "NorthWind.PersonDetails",
+          "keys": []
+        },
+        "EmployeeID": {
+          "type": "cds.Integer64",
+          "notNull": true
+        },
+        "HireDate": {
+          "@odata.Precision": 0,
+          "@odata.Type": "Edm.DateTimeOffset",
+          "type": "cds.DateTime",
+          "notNull": true
+        },
+        "Salary": {
+          "@odata.Type": "Edm.Single",
+          "type": "cds.Double",
+          "notNull": true
+        }
+      }
+    },
+    "NorthWind.Address": {
+      "kind": "type",
+      "@cds.external": true,
+      "elements": {
+        "Street": {
+          "type": "cds.LargeString"
+        },
+        "City": {
+          "type": "cds.LargeString"
+        },
+        "State": {
+          "type": "cds.LargeString"
+        },
+        "ZipCode": {
+          "type": "cds.LargeString"
+        },
+        "Country": {
+          "type": "cds.LargeString"
+        }
+      }
+    },
+    "NorthWind": {
+      "kind": "service",
+      "@cds.external": true,
+      "@Org.OData.Display.V1.Description": "This is a sample OData service with vocabularies"
+    },
+    "NorthWind.Products": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@open": true,
+      "@Org.OData.Display.V1.Description": "All Products available in the online store",
+      "elements": {
+        "ID": {
+          "key": true,
+          "type": "cds.Integer",
+          "notNull": true
+        },
+        "Name": {
+          "@Org.OData.Display.V1.DisplayName": "Product Name",
+          "type": "cds.LargeString"
+        },
+        "Description": {
+          "type": "cds.LargeString"
+        },
+        "ReleaseDate": {
+          "@odata.Precision": 0,
+          "@odata.Type": "Edm.DateTimeOffset",
+          "type": "cds.DateTime",
+          "notNull": true
+        },
+        "DiscontinuedDate": {
+          "@odata.Precision": 0,
+          "@odata.Type": "Edm.DateTimeOffset",
+          "type": "cds.DateTime"
+        },
+        "Rating": {
+          "type": "cds.Integer",
+          "notNull": true
+        },
+        "Price": {
+          "type": "cds.Double",
+          "notNull": true
+        },
+        "Categories": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "NorthWind.Categories",
+          "keys": []
+        },
+        "Supplier": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "cardinality": {
+            "max": 1
+          },
+          "target": "NorthWind.Suppliers",
+          "keys": []
+        },
+        "ProductDetail": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "cardinality": {
+            "max": 1
+          },
+          "target": "NorthWind.ProductDetails",
+          "keys": []
+        }
+      }
+    },
+    "NorthWind.ProductDetails": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "elements": {
+        "ProductID": {
+          "key": true,
+          "type": "cds.Integer",
+          "notNull": true
+        },
+        "Details": {
+          "type": "cds.LargeString"
+        },
+        "Product": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "cardinality": {
+            "max": 1
+          },
+          "target": "NorthWind.Products",
+          "keys": []
+        }
+      }
+    },
+    "NorthWind.Categories": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@open": true,
+      "elements": {
+        "ID": {
+          "key": true,
+          "type": "cds.Integer",
+          "notNull": true
+        },
+        "Name": {
+          "type": "cds.LargeString"
+        },
+        "Products": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "NorthWind.Products",
+          "keys": []
+        }
+      }
+    },
+    "NorthWind.Suppliers": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@Org.OData.Publication.V1.PublisherName": "Microsoft Corp.",
+      "@Org.OData.Publication.V1.PublisherId": "MSFT",
+      "@Org.OData.Publication.V1.Keywords": "Inventory, Supplier, Advertisers, Sales, Finance",
+      "@Org.OData.Publication.V1.AttributionUrl": "http://www.odata.org/",
+      "@Org.OData.Publication.V1.AttributionDescription": "All rights reserved",
+      "@Org.OData.Publication.V1.DocumentationUrl ": "http://www.odata.org/",
+      "@Org.OData.Publication.V1.TermsOfUseUrl": "All rights reserved",
+      "@Org.OData.Publication.V1.PrivacyPolicyUrl": "http://www.odata.org/",
+      "@Org.OData.Publication.V1.LastModified": "4/2/2013",
+      "@Org.OData.Publication.V1.ImageUrl ": "http://www.odata.org/",
+      "elements": {
+        "ID": {
+          "key": true,
+          "type": "cds.Integer",
+          "notNull": true
+        },
+        "Name": {
+          "type": "cds.LargeString"
+        },
+        "Address": {
+          "type": "NorthWind.Address"
+        },
+        "Location": {
+          "@odata.Type": "Edm.GeographyPoint",
+          "type": "cds.String"
+        },
+        "Concurrency": {
+          "type": "cds.Integer",
+          "notNull": true
+        },
+        "Products": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "NorthWind.Products",
+          "keys": []
+        }
+      }
+    },
+    "NorthWind.Persons": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@open": true,
+      "elements": {
+        "ID": {
+          "key": true,
+          "type": "cds.Integer",
+          "notNull": true
+        },
+        "Name": {
+          "type": "cds.LargeString"
+        },
+        "PersonDetail": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "cardinality": {
+            "max": 1
+          },
+          "target": "NorthWind.PersonDetails",
+          "keys": []
+        }
+      }
+    },
+    "NorthWind.PersonDetails": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "elements": {
+        "PersonID": {
+          "key": true,
+          "type": "cds.Integer",
+          "notNull": true
+        },
+        "Age": {
+          "@odata.Type": "Edm.Byte",
+          "type": "cds.Integer",
+          "notNull": true
+        },
+        "Gender": {
+          "type": "cds.Boolean",
+          "notNull": true
+        },
+        "Phone": {
+          "type": "cds.LargeString"
+        },
+        "Address": {
+          "type": "NorthWind.Address"
+        },
+        "Photo": {
+          "@Core.MediaType": "application/octet-stream",
+          "@odata.Type": "Edm.Stream",
+          "type": "cds.LargeBinary",
+          "notNull": true
+        },
+        "Person": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "cardinality": {
+            "max": 1
+          },
+          "target": "NorthWind.Persons",
+          "keys": []
+        }
+      }
+    },
+    "NorthWind.Advertisements": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "elements": {
+        "ID": {
+          "key": true,
+          "type": "cds.UUID",
+          "notNull": true
+        },
+        "Name": {
+          "type": "cds.LargeString"
+        },
+        "AirDate": {
+          "@odata.Precision": 0,
+          "@odata.Type": "Edm.DateTimeOffset",
+          "type": "cds.DateTime",
+          "notNull": true
+        },
+        "FeaturedProduct": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "cardinality": {
+            "max": 1
+          },
+          "target": "NorthWind.FeaturedProduct",
+          "keys": []
+        },
+        "blob": {
+          "@Core.MediaType": "application/octet-stream",
+          "type": "cds.LargeBinary"
+        }
+      }
+    },
+    "SSFFDEV2User": {
+      "kind": "service",
+      "@cds.external": true,
+      "@m.IsDefaultEntityContainer": "true"
+    },
+    "SSFFDEV2User.User": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.label": "User",
+      "@sap.creatable": "true",
+      "@sap.updatable": "true",
+      "@sap.upsertable": "true",
+      "@sap.deletable": "false",
+      "elements": {
+        "userId": {
+          "@sap.required": "true",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.field.control": "userPermissionsNav/userId",
+          "@sap.label": "User ID",
+          "key": true,
+          "type": "cds.String",
+          "length": 100,
+          "notNull": true
+        },
+        "PUF": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/PUF",
+          "@sap.label": "PUF (SENSE)",
+          "type": "cds.LargeString"
+        },
+        "addressLine1": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/addressLine1",
+          "@sap.label": "Address Line 1",
+          "type": "cds.String",
+          "length": 128
+        },
+        "addressLine2": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/addressLine2",
+          "@sap.label": "Address Line 2",
+          "type": "cds.String",
+          "length": 128
+        },
+        "addressLine3": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/addressLine3",
+          "@sap.label": "Address Line 3",
+          "type": "cds.LargeString"
+        },
+        "assignmentUUID": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "assignmentUUID",
+          "type": "cds.String",
+          "length": 32,
+          "notNull": true
+        },
+        "benchStrength": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.picklist": "benchStrength",
+          "@sap.field.control": "userPermissionsNav/benchStrength",
+          "@sap.label": "Bench Strength",
+          "type": "cds.LargeString"
+        },
+        "bonusBudgetAmount": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/bonusBudgetAmount",
+          "@sap.label": "bonusBudgetAmount",
+          "type": "cds.Double"
+        },
+        "bonusTarget": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/bonusTarget",
+          "@sap.label": "Target",
+          "type": "cds.Double"
+        },
+        "businessPhone": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/businessPhone",
+          "@sap.label": "Business Phone",
+          "type": "cds.String",
+          "length": 100
+        },
+        "businessSegment": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/businessSegment",
+          "@sap.label": "Business Segment",
+          "type": "cds.LargeString"
+        },
+        "cellPhone": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/cellPhone",
+          "@sap.label": "Mobile Phone",
+          "type": "cds.String",
+          "length": 30
+        },
+        "citizenship": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/citizenship",
+          "@sap.label": "Citizenship",
+          "type": "cds.LargeString"
+        },
+        "city": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/city",
+          "@sap.label": "City",
+          "type": "cds.String",
+          "length": 128
+        },
+        "companyExitDate": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/companyExitDate",
+          "@sap.display.format": "Date",
+          "@sap.label": "Company Exit Date",
+          "type": "cds.Date"
+        },
+        "compensationBonusEligible": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/compensationBonusEligible",
+          "@sap.label": "compensationBonusEligible",
+          "type": "cds.Boolean"
+        },
+        "compensationEligible": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/compensationEligible",
+          "@sap.label": "compensationEligible",
+          "type": "cds.Boolean"
+        },
+        "compensationReadOnly": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/compensationReadOnly",
+          "@sap.label": "compensationReadOnly",
+          "type": "cds.Boolean"
+        },
+        "compensationSalaryEligible": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/compensationSalaryEligible",
+          "@sap.label": "compensationSalaryEligible",
+          "type": "cds.Boolean"
+        },
+        "compensationSalaryRateType": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/compensationSalaryRateType",
+          "@sap.label": "Salary Type",
+          "type": "cds.LargeString"
+        },
+        "compensationSalaryRateUnits": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/compensationSalaryRateUnits",
+          "@sap.label": "Units per Year",
+          "type": "cds.Integer64"
+        },
+        "compensationStockEligible": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/compensationStockEligible",
+          "@sap.label": "compensationStockEligible",
+          "type": "cds.Boolean"
+        },
+        "competency": {
+          "@odata.Type": "Edm.Single",
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/competency",
+          "@sap.label": "Competency",
+          "type": "cds.Double"
+        },
+        "country": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.picklist": "country",
+          "@sap.field.control": "userPermissionsNav/country",
+          "@sap.label": "Country",
+          "type": "cds.String",
+          "length": 100
+        },
+        "criticalTalentComments": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/criticalTalentComments",
+          "@sap.label": "Critical Talent Comments",
+          "type": "cds.LargeString"
+        },
+        "cust_disabilityStatus_DEU": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.picklist": "ec_disability_DEU",
+          "@sap.field.control": "userPermissionsNav/cust_disabilityStatus_DEU",
+          "@sap.label": "Disability Status",
+          "type": "cds.LargeString"
+        },
+        "custactivity": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/custactivity",
+          "@sap.label": "Activity",
+          "type": "cds.LargeString"
+        },
+        "custom01": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/custom01",
+          "@sap.label": "Valora Level",
+          "type": "cds.String",
+          "length": 256
+        },
+        "custom02": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/custom02",
+          "@sap.label": "Business Unit",
+          "type": "cds.String",
+          "length": 256
+        },
+        "custom03": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/custom03",
+          "@sap.label": "Company Code",
+          "type": "cds.String",
+          "length": 255
+        },
+        "custom04": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/custom04",
+          "@sap.label": "Job Function",
+          "type": "cds.String",
+          "length": 256
+        },
+        "custom05": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/custom05",
+          "@sap.label": "Skills Visible",
+          "type": "cds.String",
+          "length": 256
+        },
+        "custom06": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/custom06",
+          "@sap.label": "Cost Center ID",
+          "type": "cds.String",
+          "length": 255
+        },
+        "custom07": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/custom07",
+          "@sap.label": "Employee Class",
+          "type": "cds.String",
+          "length": 100
+        },
+        "custom08": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/custom08",
+          "@sap.label": "Company Name",
+          "type": "cds.String",
+          "length": 128
+        },
+        "custom09": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/custom09",
+          "@sap.label": "FTE",
+          "type": "cds.String",
+          "length": 6
+        },
+        "custom10": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/custom10",
+          "@sap.label": "Contract End Date",
+          "type": "cds.String",
+          "length": 10
+        },
+        "custom11": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/custom11",
+          "@sap.label": "Performance",
+          "type": "cds.String",
+          "length": 1
+        },
+        "custom12": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/custom12",
+          "@sap.label": "Date of Birth",
+          "type": "cds.String",
+          "length": 10
+        },
+        "custom13": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/custom13",
+          "@sap.label": "National ID",
+          "type": "cds.String",
+          "length": 30
+        },
+        "custom14": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/custom14",
+          "@sap.label": "Elegible for TFSP",
+          "type": "cds.String",
+          "length": 255
+        },
+        "custom15": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/custom15",
+          "@sap.label": "Manager Flag",
+          "type": "cds.String",
+          "length": 1
+        },
+        "dateOfCurrentPosition": {
+          "@sap.required": "true",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/dateOfCurrentPosition",
+          "@sap.display.format": "Date",
+          "@sap.label": "Date of Current Position",
+          "type": "cds.Date"
+        },
+        "dateOfPosition": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/dateOfPosition",
+          "@sap.display.format": "Date",
+          "@sap.label": "Date of Position",
+          "type": "cds.Date"
+        },
+        "defaultFullName": {
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/defaultFullName",
+          "@sap.label": "defaultFullName",
+          "type": "cds.LargeString"
+        },
+        "defaultLocale": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/defaultLocale",
+          "@sap.label": "Default Locale",
+          "type": "cds.String",
+          "length": 5
+        },
+        "department": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.field.control": "userPermissionsNav/department",
+          "@sap.label": "Department",
+          "type": "cds.String",
+          "length": 128
+        },
+        "displayName": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.field.control": "userPermissionsNav/displayName",
+          "@sap.label": "displayName",
+          "type": "cds.String",
+          "length": 4000
+        },
+        "division": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.field.control": "userPermissionsNav/division",
+          "@sap.label": "Division",
+          "type": "cds.String",
+          "length": 128
+        },
+        "email": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/email",
+          "@sap.label": "Email",
+          "type": "cds.String",
+          "length": 100
+        },
+        "empId": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/empId",
+          "@sap.label": "Employee ID",
+          "type": "cds.String",
+          "length": 128
+        },
+        "employeeClass": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/employeeClass",
+          "@sap.label": "Nature of Contract",
+          "type": "cds.LargeString"
+        },
+        "ethnicity": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.picklist": "Ethnicity",
+          "@sap.field.control": "userPermissionsNav/ethnicity",
+          "@sap.sensitive.personal.data": "true",
+          "@sap.label": "Ethnicity",
+          "type": "cds.LargeString"
+        },
+        "fax": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/fax",
+          "@sap.label": "Business Fax",
+          "type": "cds.String",
+          "length": 20
+        },
+        "finalJobCode": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/finalJobCode",
+          "@sap.label": "Final Job Code",
+          "type": "cds.LargeString"
+        },
+        "finalJobFamily": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/finalJobFamily",
+          "@sap.label": "Final Job Family",
+          "type": "cds.LargeString"
+        },
+        "finalJobRole": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/finalJobRole",
+          "@sap.label": "Final Job Role",
+          "type": "cds.LargeString"
+        },
+        "firstName": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.field.control": "userPermissionsNav/firstName",
+          "@sap.label": "First Name",
+          "type": "cds.String",
+          "length": 128
+        },
+        "futureLeader": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/futureLeader",
+          "@sap.label": "Future Leader",
+          "type": "cds.Boolean"
+        },
+        "gender": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/gender",
+          "@sap.label": "Gender",
+          "type": "cds.LargeString",
+          "notNull": true
+        },
+        "hireDate": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/hireDate",
+          "@sap.display.format": "Date",
+          "@sap.label": "Recruit Date",
+          "type": "cds.Date"
+        },
+        "homePhone": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/homePhone",
+          "@sap.label": "Home Phone",
+          "type": "cds.LargeString"
+        },
+        "impactOfLoss": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.picklist": "impactOfLoss",
+          "@sap.field.control": "userPermissionsNav/impactOfLoss",
+          "@sap.label": "Impact of Loss",
+          "type": "cds.LargeString"
+        },
+        "impactOfLossComments": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/impactOfLossComments",
+          "@sap.label": "Impact of Loss Comments",
+          "type": "cds.LargeString"
+        },
+        "isPrimaryAssignment": {
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "true",
+          "@sap.label": "isPrimaryAssignment",
+          "type": "cds.Boolean",
+          "notNull": true
+        },
+        "issueComments": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/issueComments",
+          "@sap.label": "Issue Comments",
+          "type": "cds.LargeString"
+        },
+        "jobCode": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.field.control": "userPermissionsNav/jobCode",
+          "@sap.label": "Job Classification",
+          "type": "cds.String",
+          "length": 128
+        },
+        "jobFamily": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/jobFamily",
+          "@sap.label": "Job Family",
+          "type": "cds.LargeString"
+        },
+        "jobLevel": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/jobLevel",
+          "@sap.label": "Job Level",
+          "type": "cds.String",
+          "length": 256
+        },
+        "jobRole": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/jobRole",
+          "@sap.label": "Job Role",
+          "type": "cds.LargeString"
+        },
+        "jobTitle": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/jobTitle",
+          "@sap.label": "Title",
+          "type": "cds.String",
+          "length": 128
+        },
+        "keyPosition": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/keyPosition",
+          "@sap.label": "Key Position",
+          "type": "cds.Boolean"
+        },
+        "lastModified": {
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.field.control": "userPermissionsNav/lastModified",
+          "@sap.display.format": "Date",
+          "@sap.label": "lastModified",
+          "type": "cds.Date"
+        },
+        "lastModifiedDateTime": {
+          "@odata.Type": "Edm.DateTimeOffset",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.field.control": "userPermissionsNav/lastModifiedDateTime",
+          "@sap.label": "lastModifiedDateTime",
+          "type": "cds.DateTime"
+        },
+        "lastModifiedWithTZ": {
+          "@odata.Type": "Edm.DateTimeOffset",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.field.control": "userPermissionsNav/lastModifiedWithTZ",
+          "@sap.label": "lastModifiedWithTZ",
+          "type": "cds.DateTime"
+        },
+        "lastName": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.field.control": "userPermissionsNav/lastName",
+          "@sap.label": "Last Name",
+          "type": "cds.String",
+          "length": 128
+        },
+        "lastReviewDate": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/lastReviewDate",
+          "@sap.label": "Last Review Date",
+          "type": "cds.LargeString"
+        },
+        "learningLicenseUserType": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/learningLicenseUserType",
+          "@sap.label": "Learning License User Type",
+          "type": "cds.String",
+          "length": 255
+        },
+        "localCurrencyCode": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/localCurrencyCode",
+          "@sap.label": "Local Currency Code",
+          "type": "cds.String",
+          "length": 3
+        },
+        "location": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.field.control": "userPermissionsNav/location",
+          "@sap.label": "Location",
+          "type": "cds.String",
+          "length": 128
+        },
+        "loginMethod": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/loginMethod",
+          "@sap.label": "Login Method",
+          "type": "cds.String",
+          "length": 3
+        },
+        "lumpsum2Target": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/lumpsum2Target",
+          "@sap.label": "Lump Sum 2 Target",
+          "type": "cds.Double"
+        },
+        "lumpsumTarget": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/lumpsumTarget",
+          "@sap.label": "Lump Sum Target",
+          "type": "cds.Double"
+        },
+        "married": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/married",
+          "@sap.label": "Married",
+          "type": "cds.Boolean"
+        },
+        "matrix1Label": {
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/matrix1Label",
+          "@sap.label": "matrix1Label",
+          "type": "cds.LargeString"
+        },
+        "matrix2Label": {
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/matrix2Label",
+          "@sap.label": "matrix2Label",
+          "type": "cds.LargeString"
+        },
+        "matrixManaged": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/matrixManaged",
+          "@sap.label": "Matrix Managed",
+          "type": "cds.Boolean"
+        },
+        "meritEffectiveDate": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/meritEffectiveDate",
+          "@sap.display.format": "Date",
+          "@sap.label": "Merit Raise Effective Date",
+          "type": "cds.Date"
+        },
+        "meritTarget": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/meritTarget",
+          "@sap.display.format": "Date",
+          "@sap.label": "Merit Target",
+          "type": "cds.Date"
+        },
+        "mi": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/mi",
+          "@sap.label": "Middle Name",
+          "type": "cds.String",
+          "length": 128
+        },
+        "minority": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/minority",
+          "@sap.sensitive.personal.data": "true",
+          "@sap.label": "Diversity Candidate",
+          "type": "cds.Boolean"
+        },
+        "nationality": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/nationality",
+          "@sap.label": "Nationality",
+          "type": "cds.LargeString"
+        },
+        "newToPosition": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/newToPosition",
+          "@sap.label": "New to Position",
+          "type": "cds.Boolean"
+        },
+        "nickname": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/nickname",
+          "@sap.label": "Nickname",
+          "type": "cds.String",
+          "length": 128
+        },
+        "objective": {
+          "@odata.Type": "Edm.Single",
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/objective",
+          "@sap.label": "Objective",
+          "type": "cds.Double"
+        },
+        "onboardingId": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.label": "onboardingId",
+          "type": "cds.LargeString"
+        },
+        "origHireDate": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/origHireDate",
+          "@sap.display.format": "Date",
+          "@sap.label": "Recruit Date",
+          "type": "cds.Date"
+        },
+        "password": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/password",
+          "@sap.label": "password",
+          "type": "cds.String",
+          "length": 128
+        },
+        "payGrade": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/payGrade",
+          "@sap.label": "Pay Grade",
+          "type": "cds.String",
+          "length": 30
+        },
+        "potential": {
+          "@odata.Type": "Edm.Single",
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/potential",
+          "@sap.label": "Potential",
+          "type": "cds.Double"
+        },
+        "promotionAmount": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/promotionAmount",
+          "@sap.label": "Promotion",
+          "type": "cds.Double"
+        },
+        "raiseProrating": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/raiseProrating",
+          "@sap.label": "Raise Prorating",
+          "type": "cds.Double"
+        },
+        "reasonForLeaving": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.picklist": "impactOfLoss",
+          "@sap.field.control": "userPermissionsNav/reasonForLeaving",
+          "@sap.label": "Impact Of Loss Global",
+          "type": "cds.LargeString"
+        },
+        "reloComments": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/reloComments",
+          "@sap.label": "Comments",
+          "type": "cds.LargeString"
+        },
+        "reloLocation": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/reloLocation",
+          "@sap.label": "Preferences",
+          "type": "cds.LargeString"
+        },
+        "reloWilling": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.picklist": "relo",
+          "@sap.field.control": "userPermissionsNav/reloWilling",
+          "@sap.label": "Willing to Relocate",
+          "type": "cds.LargeString"
+        },
+        "reskfamily": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/reskfamily",
+          "@sap.label": "Reskilling Family",
+          "type": "cds.LargeString"
+        },
+        "reskroleGuid": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/reskroleGuid",
+          "@sap.label": "Reskilling role",
+          "type": "cds.LargeString"
+        },
+        "resktophotskill": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/resktophotskill",
+          "@sap.label": "Top hot skill",
+          "type": "cds.LargeString"
+        },
+        "resktopinterestskill": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/resktopinterestskill",
+          "@sap.label": "Top interest skill",
+          "type": "cds.LargeString"
+        },
+        "resktoproleskill": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/resktoproleskill",
+          "@sap.label": "Top role skill",
+          "type": "cds.LargeString"
+        },
+        "reviewFreq": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/reviewFreq",
+          "@sap.label": "Review Frequency",
+          "type": "cds.String",
+          "length": 256
+        },
+        "riskOfLoss": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.picklist": "riskOfLoss",
+          "@sap.field.control": "userPermissionsNav/riskOfLoss",
+          "@sap.label": "Risk of Loss Local",
+          "type": "cds.LargeString"
+        },
+        "salary": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/salary",
+          "@sap.label": "Salary",
+          "type": "cds.Double"
+        },
+        "salaryBudgetExtra2Percentage": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/salaryBudgetExtra2Percentage",
+          "@sap.label": "salaryBudgetExtra2Percentage",
+          "type": "cds.Double"
+        },
+        "salaryBudgetExtraPercentage": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/salaryBudgetExtraPercentage",
+          "@sap.label": "salaryBudgetExtraPercentage",
+          "type": "cds.Double"
+        },
+        "salaryBudgetFinalSalaryPercentage": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/salaryBudgetFinalSalaryPercentage",
+          "@sap.label": "salaryBudgetFinalSalaryPercentage",
+          "type": "cds.Double"
+        },
+        "salaryBudgetLumpsumPercentage": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/salaryBudgetLumpsumPercentage",
+          "@sap.label": "salaryBudgetLumpsumPercentage",
+          "type": "cds.Double"
+        },
+        "salaryBudgetMeritPercentage": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/salaryBudgetMeritPercentage",
+          "@sap.label": "salaryBudgetMeritPercentage",
+          "type": "cds.Double"
+        },
+        "salaryBudgetPromotionPercentage": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/salaryBudgetPromotionPercentage",
+          "@sap.label": "salaryBudgetPromotionPercentage",
+          "type": "cds.Double"
+        },
+        "salaryBudgetTotalRaisePercentage": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/salaryBudgetTotalRaisePercentage",
+          "@sap.label": "salaryBudgetTotalRaisePercentage",
+          "type": "cds.Double"
+        },
+        "salaryLocal": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/salaryLocal",
+          "@sap.label": "salaryLocal",
+          "type": "cds.Double"
+        },
+        "salaryProrating": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/salaryProrating",
+          "@sap.label": "Salary Prorating",
+          "type": "cds.Double"
+        },
+        "salutation": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.picklist": "SALUTATION",
+          "@sap.field.control": "userPermissionsNav/salutation",
+          "@sap.label": "Salutation",
+          "type": "cds.String",
+          "length": 128
+        },
+        "sciLastModified": {
+          "@odata.Type": "Edm.DateTimeOffset",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.field.control": "userPermissionsNav/sciLastModified",
+          "@sap.label": "sciLastModified",
+          "type": "cds.DateTime"
+        },
+        "seatingChart": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/seatingChart",
+          "@sap.label": "seatingChart",
+          "type": "cds.LargeString"
+        },
+        "serviceDate": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/serviceDate",
+          "@sap.display.format": "Date",
+          "@sap.label": "Service Date",
+          "type": "cds.Date"
+        },
+        "state": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/state",
+          "@sap.label": "State",
+          "type": "cds.String",
+          "length": 128
+        },
+        "status": {
+          "@sap.required": "true",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.field.control": "userPermissionsNav/status",
+          "@sap.label": "Status",
+          "type": "cds.String",
+          "length": 17,
+          "notNull": true
+        },
+        "stockBudgetOptionAmount": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/stockBudgetOptionAmount",
+          "@sap.label": "stockBudgetOptionAmount",
+          "type": "cds.Double"
+        },
+        "stockBudgetOther1Amount": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/stockBudgetOther1Amount",
+          "@sap.label": "stockBudgetOther1Amount",
+          "type": "cds.Double"
+        },
+        "stockBudgetOther2Amount": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/stockBudgetOther2Amount",
+          "@sap.label": "stockBudgetOther2Amount",
+          "type": "cds.Double"
+        },
+        "stockBudgetOther3Amount": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/stockBudgetOther3Amount",
+          "@sap.label": "stockBudgetOther3Amount",
+          "type": "cds.Double"
+        },
+        "stockBudgetStockAmount": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/stockBudgetStockAmount",
+          "@sap.label": "stockBudgetStockAmount",
+          "type": "cds.Double"
+        },
+        "stockBudgetUnitAmount": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/stockBudgetUnitAmount",
+          "@sap.label": "stockBudgetUnitAmount",
+          "type": "cds.Double"
+        },
+        "suffix": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/suffix",
+          "@sap.label": "Suffix",
+          "type": "cds.String",
+          "length": 128
+        },
+        "sysCostOfSource": {
+          "@odata.Type": "Edm.Single",
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/sysCostOfSource",
+          "@sap.label": "Paid to Recruiting Source",
+          "type": "cds.Double"
+        },
+        "sysSource": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.picklist": "recruitingSource",
+          "@sap.field.control": "userPermissionsNav/sysSource",
+          "@sap.label": "Recruiting Source",
+          "type": "cds.Integer"
+        },
+        "sysStartingSalary": {
+          "@odata.Type": "Edm.Single",
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/sysStartingSalary",
+          "@sap.label": "Starting Salary",
+          "type": "cds.Double"
+        },
+        "talentPool": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.picklist": "talentGroup",
+          "@sap.field.control": "userPermissionsNav/talentPool",
+          "@sap.label": "Talent Flag",
+          "type": "cds.LargeString"
+        },
+        "teamMembersSize": {
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/teamMembersSize",
+          "@sap.label": "# of Team Members",
+          "type": "cds.Integer"
+        },
+        "timeZone": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/timeZone",
+          "@sap.label": "Time Zone",
+          "type": "cds.String",
+          "length": 64
+        },
+        "title": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/title",
+          "@sap.label": "Job Title",
+          "type": "cds.String",
+          "length": 255
+        },
+        "totalTeamSize": {
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/totalTeamSize",
+          "@sap.label": "totalTeamSize",
+          "type": "cds.Integer64"
+        },
+        "username": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.field.control": "userPermissionsNav/username",
+          "@sap.label": "User Name",
+          "type": "cds.String",
+          "length": 100
+        },
+        "veteranDisabled": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/veteranDisabled",
+          "@sap.label": "Veteran Disabled",
+          "type": "cds.Boolean"
+        },
+        "veteranMedal": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/veteranMedal",
+          "@sap.label": "Veteran Medal",
+          "type": "cds.Boolean"
+        },
+        "veteranProtected": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/veteranProtected",
+          "@sap.label": "Protected Veteran",
+          "type": "cds.Boolean"
+        },
+        "veteranSeparated": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/veteranSeparated",
+          "@sap.label": "Veteran Separated",
+          "type": "cds.Boolean"
+        },
+        "zipCode": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/zipCode",
+          "@sap.label": "Postal Code",
+          "type": "cds.String",
+          "length": 15
+        },
+        "customManager": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.field.control": "userPermissionsNav/customManager",
+          "@sap.label": "Custom Manager",
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "SSFFDEV2User.User",
+          "keys": []
+        },
+        "customReports": {
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/customReports",
+          "@sap.label": "customReports",
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "SSFFDEV2User.User",
+          "keys": []
+        },
+        "directReports": {
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/directReports",
+          "@sap.label": "directReports",
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "SSFFDEV2User.User",
+          "keys": []
+        },
+        "hr": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.field.control": "userPermissionsNav/hr",
+          "@sap.label": "HR",
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "SSFFDEV2User.User",
+          "keys": []
+        },
+        "hrReports": {
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/hrReports",
+          "@sap.label": "hrReports",
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "SSFFDEV2User.User",
+          "keys": []
+        },
+        "manager": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.field.control": "userPermissionsNav/manager",
+          "@sap.label": "Manager",
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "SSFFDEV2User.User",
+          "keys": []
+        },
+        "matrixManager": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.field.control": "userPermissionsNav/matrixManager",
+          "@sap.label": "Matrix Manager",
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "SSFFDEV2User.User",
+          "keys": []
+        },
+        "matrixReports": {
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/matrixReports",
+          "@sap.label": "matrixReports",
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "SSFFDEV2User.User",
+          "keys": []
+        },
+        "proxy": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.field.control": "userPermissionsNav/proxy",
+          "@sap.label": "Proxy",
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "SSFFDEV2User.User",
+          "keys": []
+        },
+        "secondManager": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.field.control": "userPermissionsNav/secondManager",
+          "@sap.label": "Second Manager",
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "SSFFDEV2User.User",
+          "keys": []
+        },
+        "secondReports": {
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.field.control": "userPermissionsNav/secondReports",
+          "@sap.label": "secondReports",
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "SSFFDEV2User.User",
+          "keys": []
+        }
+      }
+    },
+    "SSFFDEV2CustSkills": {
+      "kind": "service",
+      "@cds.external": true,
+      "@m.IsDefaultEntityContainer": "true"
+    },
+    "SSFFDEV2CustSkills.cust_suggested_skills": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.label": "Reskilling - Suggested Skills",
+      "@sap.creatable": "true",
+      "@sap.updatable": "true",
+      "@sap.upsertable": "true",
+      "@sap.deletable": "true",
+      "elements": {
+        "externalCode": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "externalCode",
+          "key": true,
+          "type": "cds.Integer64",
+          "notNull": true
+        },
+        "createdBy": {
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "Created By",
+          "type": "cds.String",
+          "length": 100
+        },
+        "createdDateTime": {
+          "@odata.Type": "Edm.DateTimeOffset",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "Created On",
+          "type": "cds.DateTime"
+        },
+        "cust_area": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "area",
+          "type": "cds.String",
+          "length": 128
+        },
+        "cust_date": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.display.format": "Date",
+          "@sap.label": "date",
+          "type": "cds.Date"
+        },
+        "cust_description": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "description",
+          "type": "cds.String",
+          "length": 510
+        },
+        "cust_user": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "user",
+          "type": "cds.String",
+          "length": 100
+        },
+        "externalName": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "Nombre de skill",
+          "type": "cds.String",
+          "length": 128
+        },
+        "lastModifiedBy": {
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "Last Modified By",
+          "type": "cds.String",
+          "length": 100
+        },
+        "lastModifiedDateTime": {
+          "@odata.Type": "Edm.DateTimeOffset",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "Last Modified Date",
+          "type": "cds.DateTime"
+        },
+        "mdfSystemRecordStatus": {
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "Record Status",
+          "type": "cds.String",
+          "length": 255
+        }
+      }
+    }
+  },
+  "meta": {
+    "creator": "CDS Compiler v3.9.6",
+    "flavor": "inferred"
+  },
+  "$version": "2.0"
+}
