@@ -6,6 +6,7 @@ log.setLoggingLevel("info");
 
 
 
+
 module.exports = cds.service.impl(async function () {
 
 
@@ -18,12 +19,20 @@ module.exports = cds.service.impl(async function () {
 	this.on('READ', cust_suggested_skills, request => {
 		const LOG2 = cds.log('sql2');
 		LOG2.info('Cust_suggested_skills -READ request.query: ' + request.query);
-
 		log.info("Hello World");
-
-
 		return service3.tx(request).run(request.query);
+	});
 
+	/*this.before('CREATE', cust_suggested_skills, request => {
+	//	const data_request = req.data;
+		console.log('Cust_suggested_skills - CREARE BEFORE request.query: ');
+	//	return "OK BEFORE CREATE"; //service3.tx(request).run(request.query);
+	});*/
+
+	this.on('CREATE', cust_suggested_skills, request => {
+	//	const data_request = req.data;
+	console.log('Cust_suggested_skills - CREATE ON request.query: ');
+		return "OK ON CREATE"; //service3.tx(request).run(request.query);
 	});
 
 
@@ -147,6 +156,24 @@ module.exports = cds.service.impl(async function () {
 		console.log(batch);
 		req.reply('SUCCESS');
 	});
+
+	/*this.on('createDataPickList', async (req) => {
+		return my_libraries.createDataPickList(req);
+	});*/
+
+	this.on('createDataPickListFunctions', async (req) => {
+		return my_libraries.createDataPickList(req,'function');
+	});
+
+	this.on('createDataPickListActions', async (req) => {
+		return my_libraries.createDataPickList(req,'action');
+	});
+
+	this.on('getDataPickListFunctions', async (req) => {
+		return my_libraries.getDataPickList(req);
+	});
+
+
 
 
 

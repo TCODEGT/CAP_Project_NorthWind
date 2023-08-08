@@ -1,4 +1,5 @@
 const jwtDecode = require('jwt-decode');
+//const cds = require('@sap/cds');
 
 function getData() {
     console.log("Log: getInfo from library");
@@ -27,8 +28,8 @@ function getJWT(req) {
     if (mi_autho.includes("Bearer")) {
         let jwt = jwtDecode(mi_autho);
         console.log("USERINFO jwt.email" + jwt.email);
-        return "JWT Token: " + mi_autho + "/n" +"JWT Token-email: " + jwt.email;
-    } 
+        return "JWT Token: " + mi_autho + "/n" + "JWT Token-email: " + jwt.email;
+    }
     else {
         if (mi_autho.includes("Basic")) {
             console.log("Authoriztion BASIC:" + mi_autho);
@@ -36,18 +37,72 @@ function getJWT(req) {
             console.log("JWT No Authoriztion");
         }
         return "JWT Token:" + mi_autho;
-    }   
+    }
 }
 
 function getDatafromUser(req) {
-   // console.log("Log: getDatafromUse from library:" + req.data.variable);
+    // console.log("Log: getDatafromUse from library:" + req.data.variable);
     return "getDatafromUse from library";// + req.data.variable;
 }
+
+async function createDataPickList(req, action) {
+
+    const SSFFDEV2CustSkills = await cds.connect.to('SSFFDEV2CustSkills')
+    let resultInsert;
+    let midata;
+
+    if (action === 'action') {//peticion Post
+
+        midata = req.data;
+        console.log("Datos req: " + req);
+
+    } else { //peticion Get
+        midata = {
+            cust_description: 'TEST 2 ODATA',
+            cust_user: '1015096',
+            externalName: 'Tableau',
+            cust_area: '932'
+        }
+    }
+    try {
+        const SSFFDEV2CustSkills = await cds.connect.to('SSFFDEV2CustSkills')
+        resultInsert = await SSFFDEV2CustSkills.send({
+            method: 'POST',
+            path: 'cust_suggested_skills',
+            data: midata
+        })
+    } catch {
+        resultInsert = "CreateDataPickList from library with ERROR"
+    }
+
+    return "CreateDataPickList from library :" + resultInsert.externalCode;
+}
+
+async function getDataPickList(req) {
+    const SSFFDEV2CustSkills = await cds.connect.to('SSFFDEV2CustSkills');
+    let resultGet;
+    /* Only keep on of the two options */
+    /* OPTION 1*/
+    resultGet = await SSFFDEV2CustSkills.send({
+        method: 'GET',
+        path: 'cust_suggested_skills'
+    })
+    /* OPTION 2*/
+    let query = SELECT.from('cust_suggested_skills');
+    resultGet = await SSFFDEV2CustSkills.run(query);
+
+    return "getDataPickList from library :" + resultGet;
+
+}
+
+
 
 module.exports = {
     getData,
     getDataUser,
     getJWT,
-    getDatafromUser
+    getDatafromUser,
+    createDataPickList,
+    getDataPickList,
 }
 
