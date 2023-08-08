@@ -61,7 +61,15 @@ service CatalogService {
     };
 
     //@readonly
-    entity cust_suggested_skills as projection on externalSSFFDEV2CustSkills.cust_suggested_skills;
+    entity cust_suggested_skills as projection on externalSSFFDEV2CustSkills.cust_suggested_skills {
+            key externalCode,
+            cust_description,
+            cust_user,
+            externalName,
+            cust_area
+
+
+    }
 
 
     /**
@@ -85,6 +93,8 @@ service CatalogService {
     action   getDatafromUser(req : mytype)                   returns String;
     function createDataPickListFunctions()                   returns String;
     action   createDataPickListActions(req : mytypePicklist) returns String;
+    action   deleteDataPickListActions(req : mytypePicklistID) returns String;
+    function deleteDataPickListFunctions() returns String;
     function getDataPickListFunctions()                      returns String;
     action   layoutValidation(batch : batchHeader)           returns String;
 
@@ -112,6 +122,10 @@ service CatalogService {
         cust_user        : String;
         externalName     : String;
         cust_area        : String
+    }
+
+    type mytypePicklistID {
+        externalCode : String
     }
 
     /**

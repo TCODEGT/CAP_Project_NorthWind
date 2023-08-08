@@ -35,6 +35,8 @@ module.exports = cds.service.impl(async function () {
 		return "OK ON CREATE"; //service3.tx(request).run(request.query);
 	});
 
+	//this.on('CREATE', cust_suggested_skills, my_libraries.createDataPickList);
+
 
 	/************************
 	***GET USERS FROM SSFF** 
@@ -63,10 +65,17 @@ module.exports = cds.service.impl(async function () {
 		LOG.info('LOG.info: : Products - Read');
 		//LOG.error ('LOG.error: : Products - Read');
 
-		//console.log('CONSOLE.log : Products - Read');
+		console.log('CONSOLE.log : Products - Read');
 		return service.tx(request).run(request.query);
 
 	});
+
+	this.after('READ',Products, (each)=>{
+		console.log("Check:" + Products);
+		console.log("Productos AFTER READ ONE BY ONE event:" + each.ID);
+		//modificamos el valor de lo que obtenemos
+		each.Name = each.ID + ":field from logic custom";
+	  })
 
 	/******************************
 	***GET SUPPLIERS FROM NORTHWIND** 
@@ -84,22 +93,19 @@ module.exports = cds.service.impl(async function () {
 		console.log("Suppliers AFTER READ ALLS event");
 	});
 
-
-	this.after('READ',Suppliers, (each)=>{
-		console.log("Suppliers AFTER READ ONE BY ONE event:" + each.ID);
-		//modificamos el valor de lo que obtenemos
-		each.Name = each.ID + ":field from logic custom";
-	  })*/
+   */
 
 
-	this.after('READ', Suppliers, (Suppliers) => {
+
+	/*this.after('READ', Suppliers, (Suppliers) => {
+		console.log("DATOS"+Suppliers);
 		console.log("Suppliers ONLY ONCE"); //log onlye once for all entries
 		for (let each of Suppliers) {
 			console.log("Suppliers ONLY BY ONE");  //logic per row
 			each.Location = each.ID + ":field from logic custom";
 		}
 		Suppliers.push({ID:"ID3",Name:"Name3"}); //add row
-	})
+	})*/
 
 
 
@@ -167,6 +173,14 @@ module.exports = cds.service.impl(async function () {
 
 	this.on('createDataPickListActions', async (req) => {
 		return my_libraries.createDataPickList(req,'action');
+	});
+
+	this.on('deleteDataPickListActions', async (req) => {
+		return my_libraries.deleteDataPickList(req,'action');
+	});
+
+	this.on('deleteDataPickListFunctions', async (req) => {
+		return my_libraries.deleteDataPickList(req,'function');
 	});
 
 	this.on('getDataPickListFunctions', async (req) => {

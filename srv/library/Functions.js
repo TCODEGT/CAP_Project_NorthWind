@@ -54,10 +54,10 @@ async function createDataPickList(request, action) {
     if (action === 'action') {//peticion Post
 
         const { req } = request.data;
-		console.log(req);
+        console.log(req);
         midata = req;
 
-       // midata = request.data;
+        // midata = request.data;
         console.log("Datos req: " + request);
 
     } else { //peticion Get
@@ -81,6 +81,38 @@ async function createDataPickList(request, action) {
 
     return "CreateDataPickList from library :" + resultInsert.externalCode;
 }
+
+
+async function deleteDataPickList(request, action) {
+
+    // const SSFFDEV2CustSkills = await cds.connect.to('SSFFDEV2CustSkills')
+    let resultDelete;
+    let pathDelete;
+
+    if (action === 'action') {//peticion Post
+        const { req } = request.data;
+        console.log("Datos req: " + req);
+        console.log("Datos request: " + request);
+        pathDelete = `cust_suggested_skills(externalCode=' + ${req.externalCode} + '),`;
+    } else {//peticion Get
+        pathDelete = `cust_suggested_skills(externalCode='26130418')`;
+    }
+   
+    try {
+        const SSFFDEV2CustSkills = await cds.connect.to('SSFFDEV2CustSkills')
+        resultDelete = await SSFFDEV2CustSkills.send({
+            method: 'DELETE',
+            path: pathDelete
+        });
+
+        resultDelete = "DeleteDataPickList from library OK"
+    } catch {
+        resultDelete = "DeleteDataPickList from library with ERROR"
+    }
+
+    return resultDelete;
+}
+
 
 async function getDataPickList(req) {
     const SSFFDEV2CustSkills = await cds.connect.to('SSFFDEV2CustSkills');
@@ -108,5 +140,6 @@ module.exports = {
     getDatafromUser,
     createDataPickList,
     getDataPickList,
+    deleteDataPickList
 }
 
