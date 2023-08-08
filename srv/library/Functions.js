@@ -92,24 +92,22 @@ async function deleteDataPickList(request, action) {
     if (action === 'action') {//peticion Post
         const { req } = request.data;
         console.log("Datos req: " + req);
+        console.log("Datos req.externalCode: " + req.externalCode);
         console.log("Datos request: " + request);
-        pathDelete = `cust_suggested_skills(externalCode=' + ${req.externalCode} + '),`;
+        pathDelete = `cust_suggested_skills(externalCode='${req.externalCode}')`;
     } else {//peticion Get
-        pathDelete = `cust_suggested_skills(externalCode='26130418')`;
+        pathDelete = `cust_suggested_skills(externalCode='26130418')`; // asi se salta los '
     }
-   
     try {
         const SSFFDEV2CustSkills = await cds.connect.to('SSFFDEV2CustSkills')
         resultDelete = await SSFFDEV2CustSkills.send({
             method: 'DELETE',
             path: pathDelete
         });
-
         resultDelete = "DeleteDataPickList from library OK"
     } catch {
         resultDelete = "DeleteDataPickList from library with ERROR"
     }
-
     return resultDelete;
 }
 
