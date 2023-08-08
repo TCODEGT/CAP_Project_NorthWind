@@ -45,7 +45,7 @@ function getDatafromUser(req) {
     return "getDatafromUse from library";// + req.data.variable;
 }
 
-async function createDataPickList(req, action) {
+async function createDataPickList(request, action) {
 
     const SSFFDEV2CustSkills = await cds.connect.to('SSFFDEV2CustSkills')
     let resultInsert;
@@ -53,8 +53,12 @@ async function createDataPickList(req, action) {
 
     if (action === 'action') {//peticion Post
 
-        midata = req.data;
-        console.log("Datos req: " + req);
+        const { req } = request.data;
+		console.log(req);
+        midata = req;
+
+       // midata = request.data;
+        console.log("Datos req: " + request);
 
     } else { //peticion Get
         midata = {
